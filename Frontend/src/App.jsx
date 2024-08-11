@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import Banner from './Components/Banners';
+import Dashboard from './Components/Dashboard';
 
 const App = () => {
-  const [bannerData, setBannerData] = useState({});
-
-  useEffect(() => {
-    const fetchBannerData = async () => {
-      const response = await axios.get('/api/banner');
-      setBannerData(response.data);
-    };
-    fetchBannerData();
-  }, []);
+  const [bannerData, setBannerData] = useState({
+    description: 'Welcome to our website!',
+    timeLeft: 60,
+    link: 'http://example.com',
+    isVisible: true,
+  });
 
   return (
-    <div>
-      <Banner 
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+      <Banner
         description={bannerData.description}
         timeLeft={bannerData.timeLeft}
         link={bannerData.link}
         isVisible={bannerData.isVisible}
       />
-      <Dashboard />
+      <Dashboard setBannerData={setBannerData} />
     </div>
   );
 };

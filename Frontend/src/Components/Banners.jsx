@@ -15,10 +15,17 @@ const Banner = ({ description, link, timeLeft, isVisible }) => {
   if (!isVisible || countdown <= 0) return null;
 
   return (
-    <div className="banner">
-      <p>{description}</p>
-      <a href={link} target="_blank" rel="noopener noreferrer">Click Here</a>
-      <p>{countdown} seconds left</p>
+    <div className="bg-blue-500 text-white p-4 text-center rounded-md shadow-md">
+      <p className="mb-2 text-lg">{description}</p>
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline text-white hover:text-gray-200"
+      >
+        Click Here
+      </a>
+      <p className="mt-2 text-sm">{countdown} seconds left</p>
     </div>
   );
 };
